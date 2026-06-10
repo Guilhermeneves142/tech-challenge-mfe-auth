@@ -34,7 +34,7 @@ export function RecuperarSenhaForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="h-10 bg-background"
+          className="pr-10"
           required
         />
       </div>

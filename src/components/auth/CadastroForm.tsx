@@ -56,7 +56,7 @@ export function CadastroForm() {
           type="text"
           placeholder="João Silva"
           autoComplete="name"
-          className="h-9"
+          className="pr-10"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -72,7 +72,7 @@ export function CadastroForm() {
           type="email"
           placeholder="seu@email.com"
           autoComplete="email"
-          className="h-9"
+          className="pr-10"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
