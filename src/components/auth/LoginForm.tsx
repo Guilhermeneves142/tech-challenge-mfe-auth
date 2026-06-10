@@ -48,6 +48,7 @@ export function LoginForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="pr-10"
           required
           onInvalid={(e) =>
             (e.target as HTMLInputElement).setCustomValidity("Preencha este campo")
