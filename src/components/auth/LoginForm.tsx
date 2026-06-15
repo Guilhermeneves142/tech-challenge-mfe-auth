@@ -44,7 +44,7 @@ export function LoginForm() {
         <Input
           id="email"
           type="email"
-          placeholder="seu@email.com"
+          placeholder="Digite seu e-mail"
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

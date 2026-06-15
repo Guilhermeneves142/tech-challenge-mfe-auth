@@ -54,7 +54,7 @@ export function CadastroForm() {
         <Input
           id="name"
           type="text"
-          placeholder="João Silva"
+          placeholder="Digite seu nome completo"
           autoComplete="name"
           className="pr-10"
           value={name}
@@ -70,7 +70,7 @@ export function CadastroForm() {
         <Input
           id="email"
           type="email"
-          placeholder="seu@email.com"
+          placeholder="Digite seu e-mail"
           autoComplete="email"
           className="pr-10"
           value={email}
@@ -85,7 +85,7 @@ export function CadastroForm() {
         </Label>
         <PasswordInput
           id="password"
-          placeholder="Mínimo 8 caracteres"
+          placeholder="Digite sua senha"
           autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -99,7 +99,7 @@ export function CadastroForm() {
         </Label>
         <PasswordInput
           id="confirm"
-          placeholder="Repita a senha"
+          placeholder="Confirme sua senha"
           autoComplete="new-password"
           value={confirm}
           onChange={(e) => setConfirm(e.target.value)}
