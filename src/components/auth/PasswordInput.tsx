@@ -16,7 +16,7 @@ interface PasswordInputProps {
 
 export function PasswordInput({
   id,
-  placeholder = "••••••••",
+  placeholder = "Digite sua senha",
   autoComplete,
   value,
   onChange,
