@@ -26,7 +26,10 @@ export function AuthLayout({ children }: { children: ReactNode }) {
         className="hidden lg:flex lg:w-[480px] xl:w-[520px] flex-col justify-between relative overflow-hidden bg-[var(--color-brand-tertiary)] shrink-0"
         aria-label="FinanceApp. Tome o controle das suas finanças."
       >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+        >
           <svg
             className="absolute inset-0 w-full h-full opacity-[0.04]"
             xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +37,18 @@ export function AuthLayout({ children }: { children: ReactNode }) {
             focusable="false"
           >
             <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="1"
+                />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
@@ -68,7 +81,10 @@ export function AuthLayout({ children }: { children: ReactNode }) {
               das suas finanças
             </h1>
 
-            <p className="text-white/60 text-base leading-relaxed max-w-xs" aria-hidden="true">
+            <p
+              className="text-white/60 text-base leading-relaxed max-w-xs"
+              aria-hidden="true"
+            >
               Planeje, acompanhe e evolua. Tudo em um só lugar, de forma simples
               e segura.
             </p>
@@ -84,8 +100,12 @@ export function AuthLayout({ children }: { children: ReactNode }) {
                       <Icon size={20} />
                     </div>
                     <div>
-                      <p className="text-white font-semibold text-sm">{f.title}</p>
-                      <p className="text-white/50 text-sm mt-0.5">{f.description}</p>
+                      <p className="text-white font-semibold text-sm">
+                        {f.title}
+                      </p>
+                      <p className="text-white/50 text-sm mt-0.5">
+                        {f.description}
+                      </p>
                     </div>
                   </li>
                 );
@@ -94,15 +114,22 @@ export function AuthLayout({ children }: { children: ReactNode }) {
           </div>
 
           <p className="text-white/30 text-xs" aria-hidden="true">
-            © {new Date().getFullYear()} FinanceApp. Todos os direitos reservados.
+            © {new Date().getFullYear()} FinanceApp. Todos os direitos
+            reservados.
           </p>
         </div>
       </aside>
 
       <main className="flex-1 flex flex-col items-center justify-center p-6 sm:p-10 min-h-screen">
-        <section className="sr-only" aria-label="FinanceApp. Tome o controle das suas finanças." />
+        <section
+          className="sr-only"
+          aria-label="FinanceApp. Tome o controle das suas finanças."
+        />
 
-        <div className="flex lg:hidden items-center gap-2 mb-8" aria-hidden="true">
+        <div
+          className="flex lg:hidden items-center gap-2 mb-8"
+          aria-hidden="true"
+        >
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
             <Wallet size={18} />
           </div>

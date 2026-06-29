@@ -11,7 +11,7 @@ interface RecuperarSenhaSuccessProps {
 
 export function RecuperarSenhaSuccess({ email, onReset }: RecuperarSenhaSuccessProps) {
   return (
-    <div className="flex flex-col items-center text-center gap-4 py-4">
+    <div role="status" className="flex flex-col items-center text-center gap-4 py-4">
       <div className="w-16 h-16 rounded-full bg-[var(--color-feedback-success)]/10 flex items-center justify-center">
         <CheckCircle size={32} stroke="var(--color-feedback-success)" />
       </div>

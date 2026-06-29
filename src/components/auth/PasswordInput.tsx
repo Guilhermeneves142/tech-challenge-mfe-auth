@@ -12,6 +12,7 @@ interface PasswordInputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   "aria-invalid"?: boolean;
+  "aria-describedby"?: string;
 }
 
 export function PasswordInput({
@@ -22,6 +23,7 @@ export function PasswordInput({
   onChange,
   className,
   "aria-invalid": ariaInvalid,
+  "aria-describedby": ariaDescribedby,
 }: PasswordInputProps) {
   const [show, setShow] = useState(false);
 
@@ -36,6 +38,7 @@ export function PasswordInput({
         onChange={onChange}
         className={`pr-10 ${className ?? ""}`}
         aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedby}
       />
       <button
         type="button"
