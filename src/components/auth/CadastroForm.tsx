@@ -104,14 +104,21 @@ export function CadastroForm() {
           value={confirm}
           onChange={(e) => setConfirm(e.target.value)}
           aria-invalid={passwordMismatch}
+          aria-describedby={passwordMismatch ? "confirm-error" : undefined}
           className={passwordMismatch ? "border-destructive focus-visible:ring-destructive/20" : ""}
         />
         {passwordMismatch && (
-          <p className="text-xs text-destructive">As senhas não coincidem</p>
+          <p id="confirm-error" role="alert" className="text-xs text-destructive">
+            As senhas não coincidem
+          </p>
         )}
       </div>
 
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
 
       <Button
         type="submit"
