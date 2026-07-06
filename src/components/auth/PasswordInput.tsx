@@ -36,17 +36,22 @@ export function PasswordInput({
         autoComplete={autoComplete}
         value={value}
         onChange={onChange}
-        className={`pr-10 ${className ?? ""}`}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedby}
+        className={`pr-14 !py-0 ${className ?? ""}`}
       />
+
       <button
         type="button"
         onClick={() => setShow((v) => !v)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
         aria-label={show ? "Ocultar senha" : "Mostrar senha"}
+        className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
-        {show ? <EyeOff size={16} /> : <Eye size={16} />}
+        {show ? (
+          <EyeOff className="h-5 w-5 block" aria-hidden />
+        ) : (
+          <Eye className="h-5 w-5 block" aria-hidden />
+        )}
       </button>
     </div>
   );

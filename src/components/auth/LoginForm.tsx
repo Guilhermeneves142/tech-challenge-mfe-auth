@@ -41,6 +41,7 @@ export function LoginForm() {
         <Label htmlFor="email" className="text-sm font-medium text-foreground">
           E-mail
         </Label>
+
         <Input
           id="email"
           type="email"
@@ -51,31 +52,38 @@ export function LoginForm() {
           className="pr-10"
           required
           onInvalid={(e) =>
-            (e.target as HTMLInputElement).setCustomValidity("Preencha este campo")
+            (e.target as HTMLInputElement).setCustomValidity(
+              "Preencha este campo",
+            )
           }
           onInput={(e) => (e.target as HTMLInputElement).setCustomValidity("")}
         />
       </div>
 
       <div className="space-y-1.5">
-        <div className="flex items-center justify-between">
-          <Label htmlFor="password" className="text-sm font-medium text-foreground">
-            Senha
-          </Label>
-          <Link
-            href="/recuperar-senha"
-            className="text-xs text-primary hover:underline font-medium"
-          >
-            Esqueci minha senha
-          </Link>
-        </div>
-        <PasswordInput
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+  <div className="flex items-center justify-between">
+    <Label
+      htmlFor="password"
+      className="text-sm font-medium text-foreground"
+    >
+      Senha
+    </Label>
+
+    <Link
+      href="/recuperar-senha"
+      className="px-2 py-1 text-xs text-primary hover:underline font-medium"
+    >
+      Esqueci minha senha
+    </Link>
+  </div>
+
+  <PasswordInput
+    id="password"
+    autoComplete="current-password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+</div>
 
       {error && (
         <p role="alert" className="text-sm text-destructive">
@@ -83,7 +91,11 @@ export function LoginForm() {
         </p>
       )}
 
-      <Button type="submit" className="w-full h-10 mt-2 font-semibold" disabled={loading}>
+      <Button
+        type="submit"
+        className="w-full h-10 mt-2 font-semibold"
+        disabled={loading}
+      >
         {loading ? "Entrando..." : "Entrar"}
       </Button>
 
@@ -91,6 +103,7 @@ export function LoginForm() {
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t border-border" />
         </div>
+
         <div className="relative flex justify-center text-xs">
           <span className="bg-card px-3 text-muted-foreground">ou</span>
         </div>
@@ -98,7 +111,10 @@ export function LoginForm() {
 
       <p className="text-center text-sm text-muted-foreground">
         Não tem uma conta?{" "}
-        <Link href="/cadastro" className="text-primary font-semibold hover:underline">
+        <Link
+          href="/cadastro"
+          className="inline-flex min-h-11 items-center px-2 text-primary font-semibold hover:underline"
+        >
           Cadastre-se grátis
         </Link>
       </p>
