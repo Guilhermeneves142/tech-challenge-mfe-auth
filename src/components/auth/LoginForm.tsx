@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { authApi } from "@/lib/auth-api";
+import { useLogin } from "@/lib/queries/auth";
 import { saveAuth } from "@/lib/auth-storage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
@@ -11,7 +11,7 @@ export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const login = useLogin();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -22,16 +22,13 @@ export function LoginForm() {
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await authApi.login({ email, password });
+      const response = await login.mutateAsync({ email, password });
       saveAuth(response.token, response.user);
       // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
       setError("E-mail ou senha inválidos.");
-      setLoading(false);
     }
   }
 
@@ -94,9 +91,9 @@ export function LoginForm() {
       <Button
         type="submit"
         className="w-full h-10 mt-2 font-semibold"
-        disabled={loading}
+        disabled={login.isPending}
       >
-        {loading ? "Entrando..." : "Entrar"}
+        {login.isPending ? "Entrando..." : "Entrar"}
       </Button>
 
       <div className="relative my-1">

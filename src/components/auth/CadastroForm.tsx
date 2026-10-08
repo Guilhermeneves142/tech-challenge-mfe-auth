@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { authApi } from "@/lib/auth-api";
+import { useRegister } from "@/lib/queries/auth";
 import { saveAuth } from "@/lib/auth-storage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
@@ -14,7 +14,7 @@ export function CadastroForm() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const register = useRegister();
 
   const passwordMismatch = confirm.length > 0 && confirm !== password;
 
@@ -32,16 +32,13 @@ export function CadastroForm() {
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await authApi.register({ name, email, password });
+      const response = await register.mutateAsync({ name, email, password });
       saveAuth(response.token, response.user);
       // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
       setError("Não foi possível criar sua conta.");
-      setLoading(false);
     }
   }
 
@@ -123,9 +120,9 @@ export function CadastroForm() {
       <Button
         type="submit"
         className="w-full h-10 mt-2 font-semibold"
-        disabled={loading || passwordMismatch}
+        disabled={register.isPending || passwordMismatch}
       >
-        {loading ? "Criando conta..." : "Criar conta"}
+        {register.isPending ? "Criando conta..." : "Criar conta"}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
