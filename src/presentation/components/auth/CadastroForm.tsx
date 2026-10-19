@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRegister } from "@/lib/queries/auth";
-import { saveAuth } from "@/lib/auth-storage";
+import { useRegister } from "@/presentation/hooks/useAuth";
+import { passwordsMismatch, validateRegister } from "@/presentation/validators/authValidators";
+import { getErrorMessage } from "@/presentation/utils/getErrorMessage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
 import { PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
@@ -14,31 +15,26 @@ export function CadastroForm() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const register = useRegister();
 
-  const passwordMismatch = confirm.length > 0 && confirm !== password;
+  const register = useRegister();
+  const passwordMismatch = passwordsMismatch(password, confirm);
+
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!name || !email || !password || !confirm) {
-      setError("Preencha todos os campos.");
-      return;
-    }
-
-    if (password !== confirm) {
-      setError("As senhas não coincidem.");
+    const validationError = validateRegister({ name, email, password, confirm });
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
     try {
-      const response = await register.mutateAsync({ name, email, password });
-      saveAuth(response.token, response.user);
-      // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
+      await register.mutateAsync({ name, email, password });
       window.location.href = "/dashboard";
-    } catch {
-      setError("Não foi possível criar sua conta.");
+    } catch (error) {
+      setError(getErrorMessage(error, "Não foi possível criar sua conta."));
     }
   }
 

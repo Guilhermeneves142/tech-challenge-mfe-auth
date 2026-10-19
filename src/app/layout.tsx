@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { AuthLayout } from "@/components/AuthLayout";
+import { AuthLayout } from "@/presentation/components/AuthLayout";
 import { Providers } from "./providers";
 import "./globals.css";
 

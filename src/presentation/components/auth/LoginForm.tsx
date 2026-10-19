@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useLogin } from "@/lib/queries/auth";
-import { saveAuth } from "@/lib/auth-storage";
+import { useLogin } from "@/presentation/hooks/useAuth";
+import { validateLogin } from "@/presentation/validators/authValidators";
+import { getErrorMessage } from "@/presentation/utils/getErrorMessage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
 
@@ -17,16 +18,15 @@ export function LoginForm() {
     e.preventDefault();
     setError("");
 
-    if (!email || !password) {
-      setError("Preencha e-mail e senha.");
-      return;
+    const validationError = validateLogin({ email, password });
+      if (validationError) {
+        setError(validationError);
+        return;
     }
 
     try {
-      const response = await login.mutateAsync({ email, password });
-      saveAuth(response.token, response.user);
-      // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
-      window.location.href = "/dashboard";
+        await login.mutateAsync({ email, password });
+        window.location.href = "/dashboard";
     } catch {
       setError("E-mail ou senha inválidos.");
     }
