@@ -1,1 +1,1 @@
-export { default } from "@/components/auth/CadastroPage";
+export { default } from "@/presentation/components/auth/CadastroPage";
