@@ -1,10 +1,10 @@
 import { LoginUseCase } from "@/application/use-cases/LoginUseCase";
 import { LogoutUseCase } from "@/application/use-cases/LogoutUseCase";
 import { RegisterUseCase } from "@/application/use-cases/RegisterUseCase";
-import { HttpAuthRepository } from "../repositories/HttpAuthRepository";
+import { AuthRepositoryImpl } from "../repositories/AuthRepositoryImpl";
 import { BrowserSessionStorage } from "../storage/BrowserSessionStorage";
 
-const authRepository = new HttpAuthRepository();
+const authRepository = new AuthRepositoryImpl();
 const sessionStorage = new BrowserSessionStorage();
 
 export const container = {
