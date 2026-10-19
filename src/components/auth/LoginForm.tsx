@@ -23,7 +23,7 @@ export function LoginForm() {
 
     try {
       await login.mutateAsync({ email, password });
-      // Sessão já está no cookie httpOnly. Navegação entre zonas (auth -> shell) é hard navigation no multizone.
+      // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
       setError("E-mail ou senha inválidos.");

@@ -33,7 +33,7 @@ export function CadastroForm() {
 
     try {
       await register.mutateAsync({ name, email, password });
-      // Sessão já está no cookie httpOnly. Navegação entre zonas (auth -> shell) é hard navigation no multizone.
+      // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
       setError("Não foi possível criar sua conta.");
