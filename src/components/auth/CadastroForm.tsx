@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRegister } from "@/lib/queries/auth";
-import { saveAuth } from "@/lib/auth-storage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
 import { PasswordStrengthIndicator } from "./PasswordStrengthIndicator";
@@ -33,9 +32,8 @@ export function CadastroForm() {
     }
 
     try {
-      const response = await register.mutateAsync({ name, email, password });
-      saveAuth(response.token, response.user);
-      // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
+      await register.mutateAsync({ name, email, password });
+      // Sessão já está no cookie httpOnly. Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
       setError("Não foi possível criar sua conta.");
