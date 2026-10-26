@@ -13,6 +13,8 @@ _proxiado_ pelo host (shell) do projeto.
 ## Tecnologias
 * **Next.js 16 / React 19 / TypeScript**
 * **Tailwind** + Design System `@vandrei/finance-ui`
+* **Dados/cache:** TanStack React Query (`useMutation` para login e cadastro) — hooks em `src/lib/queries/auth.ts`
+* **Sessão:** cookie `httpOnly` emitido pelo host (`/api/auth/login`); nada de token em `localStorage`
 * **Multizone:** `basePath: "/auth"` ([next.config.ts](./next.config.ts))
 
 <br>

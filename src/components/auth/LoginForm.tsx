@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLogin } from "@/lib/queries/auth";
-import { saveAuth } from "@/lib/auth-storage";
 import { Button, Input, Label } from "@vandrei/finance-ui";
 import { PasswordInput } from "./PasswordInput";
 
@@ -23,8 +22,7 @@ export function LoginForm() {
     }
 
     try {
-      const response = await login.mutateAsync({ email, password });
-      saveAuth(response.token, response.user);
+      await login.mutateAsync({ email, password });
       // Navegação entre zonas (auth -> shell) é hard navigation no multizone.
       window.location.href = "/dashboard";
     } catch {
