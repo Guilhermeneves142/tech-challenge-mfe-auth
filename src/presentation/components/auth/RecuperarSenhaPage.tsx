@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vandrei/finance-ui";
-import { RecuperarSenhaForm } from "@/components/auth/RecuperarSenhaForm";
+import { RecuperarSenhaForm } from "@/presentation/components/auth/RecuperarSenhaForm";
 
 export default function RecuperarSenhaPage() {
   return (

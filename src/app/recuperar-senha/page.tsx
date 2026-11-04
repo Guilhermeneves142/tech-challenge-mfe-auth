@@ -1,1 +1,1 @@
-export { default } from "@/components/auth/RecuperarSenhaPage";
+export { default } from "@/presentation/components/auth/RecuperarSenhaPage";
