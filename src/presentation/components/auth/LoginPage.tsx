@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vandrei/finance-ui";
-import { LoginForm } from "@/components/auth/LoginForm";
+import { LoginForm } from "@/presentation/components/auth/LoginForm";
 
 export default function LoginPage() {
   return (

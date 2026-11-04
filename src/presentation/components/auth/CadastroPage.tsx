@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vandrei/finance-ui";
-import { CadastroForm } from "@/components/auth/CadastroForm";
+import { CadastroForm } from "@/presentation/components/auth/CadastroForm";
 
 export default function CadastroPage() {
   return (
